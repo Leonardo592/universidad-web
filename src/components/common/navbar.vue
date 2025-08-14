@@ -1,5 +1,6 @@
 <template>
   <header class="hidden lg:flex flex-col sticky top-0 bg-white z-40">
+    <!-- BARRA SUPERIOR -->
     <div class="w-full bg-uancv-blue-dark text-white">
       <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-10">
         <div class="text-xs font-medium tracking-wide">
@@ -13,69 +14,108 @@
       </div>
     </div>
     
+    <!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
     <nav class="w-full bg-white border-b border-uancv-border shadow-sm h-[72px]">
-      <div class="max-w-screen-xl w-full flex items-center justify-between mx-auto px-4 sm:px-6 lg:px-8 h-full">
+      <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full relative">
 
-        <div class="flex items-center space-x-8">
-          <router-link to="/" class="flex-shrink-0">
-            <img class="h-12 w-auto" src="https://economia.uancv.edu.pe/web/escuela/logos_uancv/logo_uancv.png" alt="Logo UANCV">
+        <div class="flex items-center h-full">
+          <router-link to="/" class="flex-shrink-0 flex items-center space-x-3 group pr-8">
+            <img class="h-12 w-auto transition-transform duration-300 group-hover:scale-110" src="https://economia.uancv.edu.pe/web/escuela/logos_uancv/logo_uancv.png" alt="Logo UANCV">
+            <div class="hidden xl:block">
+              <span class="block text-lg font-bold text-uancv-blue-dark leading-tight">UANCV</span>
+              <span class="block text-xs text-uancv-text-secondary leading-tight">Al servicio del pueblo</span>
+            </div>
           </router-link>
 
-          <ul class="flex items-center space-x-1">
-            <li>
-              <router-link to="/" class="inline-flex items-center h-[72px] px-4 text-sm font-semibold border-b-4 transition-colors duration-200 text-uancv-text-secondary border-transparent hover:text-uancv-red hover:border-uancv-red/50 focus:outline-none focus:text-uancv-red router-link-exact-active:text-uancv-red router-link-exact-active:border-uancv-red">Inicio</router-link>
+          <ul class="flex items-center h-full space-x-1">
+            <li class="h-full">
+              <router-link to="/" class="nav-link">Inicio</router-link>
             </li>
             
-            <li class="relative group">
-              <button class="inline-flex items-center h-[72px] px-4 text-sm font-semibold border-b-4 transition-colors duration-200 text-uancv-text-secondary border-transparent group-hover:text-uancv-red group-hover:border-uancv-red/50 focus:outline-none focus:text-uancv-red">
+            <li class="h-full group">
+              <button class="nav-link-button">
                 <span>Programas Académicos</span>
-                <svg class="w-4 h-4 ml-1.5 text-slate-400 group-hover:text-slate-500 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
               </button>
-              <div class="absolute left-0 top-full min-w-[240px] bg-white shadow-xl rounded-b-lg mt-0 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-30 border border-uancv-border/75 border-t-0">
-                <router-link to="/administracion-marketing" class="block w-full text-left px-4 py-2.5 text-sm font-medium text-uancv-text-secondary hover:bg-uancv-bg hover:text-uancv-red focus:bg-uancv-bg focus:text-uancv-red focus:outline-none transition-colors duration-150 router-link-active:text-uancv-red">Contabilidad</router-link>
-                <router-link to="/programas/administracion" class="block w-full text-left px-4 py-2.5 text-sm font-medium text-uancv-text-secondary hover:bg-uancv-bg hover:text-uancv-red focus:bg-uancv-bg focus:text-uancv-red focus:outline-none transition-colors duration-150 router-link-active:text-uancv-red">Administración</router-link>
-                <div class="my-1 border-t border-uancv-border"></div>
-                <router-link to="/posgrado" class="block w-full text-left px-4 py-2.5 text-sm font-medium text-uancv-text-secondary hover:bg-uancv-bg hover:text-uancv-red focus:bg-uancv-bg focus:text-uancv-red focus:outline-none transition-colors duration-150 router-link-active:text-uancv-red">Escuela de Posgrado</router-link>
+              <div class="mega-menu">
+                <div class="grid grid-cols-3 gap-8 p-8">
+                  <div>
+                    <h4 class="mega-menu-title">Pregrado</h4>
+                    <ul class="mt-4 space-y-3">
+                      <li><router-link to="/programas/contabilidad" class="mega-menu-link">Contabilidad y Finanzas</router-link></li>
+                      <li><router-link to="/programas/administracion" class="mega-menu-link">Administración de Empresas</router-link></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="mega-menu-title">Posgrado</h4>
+                    <ul class="mt-4 space-y-3">
+                      <li><router-link to="/posgrado/maestrias" class="mega-menu-link">Maestrías</router-link></li>
+                      <li><router-link to="/posgrado/doctorados" class="mega-menu-link">Doctorados</router-link></li>
+                    </ul>
+                  </div>
+                  <div class="bg-uancv-bg p-6">
+                     <h4 class="mega-menu-title">Proceso de Admisión</h4>
+                     <p class="text-sm mt-2 text-uancv-text-secondary">Tu futuro profesional comienza aquí. Postula ahora.</p>
+                     <router-link to="/admision" class="inline-block mt-4 bg-uancv-red text-white font-bold text-sm px-5 py-2 hover:bg-uancv-red/90">Postular Ahora</router-link>
+                  </div>
+                </div>
               </div>
             </li>
 
-            <li>
-              <router-link to="/admision" class="inline-flex items-center h-[72px] px-4 text-sm font-semibold border-b-4 transition-colors duration-200 text-uancv-text-secondary border-transparent hover:text-uancv-red hover:border-uancv-red/50 focus:outline-none focus:text-uancv-red router-link-active:text-uancv-red router-link-active:border-uancv-red">Admisión</router-link>
+            <li class="h-full">
+              <router-link to="/admision" class="nav-link">Admisión</router-link>
             </li>
             
-            <li class="relative group">
-              <button class="inline-flex items-center h-[72px] px-4 text-sm font-semibold border-b-4 transition-colors duration-200 text-uancv-text-secondary border-transparent group-hover:text-uancv-red group-hover:border-uancv-red/50 focus:outline-none focus:text-uancv-red">
+            <li class="h-full group">
+              <button class="nav-link-button">
                 <span>Nuestra Universidad</span>
-                <svg class="w-4 h-4 ml-1.5 text-slate-400 group-hover:text-slate-500 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
               </button>
-              <div class="absolute left-0 top-full min-w-[240px] bg-white shadow-xl rounded-b-lg mt-0 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-30 border border-uancv-border/75 border-t-0">
-                <router-link to="/historia" class="block w-full text-left px-4 py-2.5 text-sm font-medium text-uancv-text-secondary hover:bg-uancv-bg hover:text-uancv-red focus:bg-uancv-bg focus:text-uancv-red focus:outline-none transition-colors duration-150 router-link-active:text-uancv-red">Historia y Misión</router-link>
-                <router-link to="/licenciamiento" class="block w-full text-left px-4 py-2.5 text-sm font-medium text-uancv-text-secondary hover:bg-uancv-bg hover:text-uancv-red focus:bg-uancv-bg focus:text-uancv-red focus:outline-none transition-colors duration-150 router-link-active:text-uancv-red">Proceso de Licenciamiento</router-link>
-                <router-link to="/campus" class="block w-full text-left px-4 py-2.5 text-sm font-medium text-uancv-text-secondary hover:bg-uancv-bg hover:text-uancv-red focus:bg-uancv-bg focus:text-uancv-red focus:outline-none transition-colors duration-150 router-link-active:text-uancv-red">Campus y Filiales</router-link>
+               <div class="mega-menu">
+                <div class="grid grid-cols-3 gap-8 p-8">
+                  <div>
+                    <h4 class="mega-menu-title">Sobre Nosotros</h4>
+                    <ul class="mt-4 space-y-3">
+                      <li><router-link to="/historia" class="mega-menu-link">Historia y Misión</router-link></li>
+                      <li><router-link to="/autoridades" class="mega-menu-link">Autoridades</router-link></li>
+                      <li><router-link to="/campus" class="mega-menu-link">Campus y Filiales</router-link></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="mega-menu-title">Normativa y Transparencia</h4>
+                    <ul class="mt-4 space-y-3">
+                      <li><router-link to="/licenciamiento" class="mega-menu-link">Proceso de Licenciamiento</router-link></li>
+                      <li><router-link to="/transparencia" class="mega-menu-link">Portal de Transparencia</router-link></li>
+                      <li><router-link to="/reglamentos" class="mega-menu-link">Reglamentos</router-link></li>
+                    </ul>
+                  </div>
+                   <div>
+                    <h4 class="mega-menu-title">Comunidad</h4>
+                    <ul class="mt-4 space-y-3">
+                      <li><router-link to="/convenios" class="mega-menu-link">Convenios</router-link></li>
+                      <li><router-link to="/noticias" class="mega-menu-link">Noticias y Eventos</router-link></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </li>
-            <li>
-              <router-link to="/contacto" class="inline-flex items-center h-[72px] px-4 text-sm font-semibold border-b-4 transition-colors duration-200 text-uancv-text-secondary border-transparent hover:text-uancv-red hover:border-uancv-red/50 focus:outline-none focus:text-uancv-red router-link-active:text-uancv-red router-link-active:border-uancv-red">Contacto</router-link>
             </li>
           </ul>
         </div>
         
-        <div class="relative ml-auto w-64 flex-shrink-0"> 
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg class="w-4 h-4 text-uancv-text-secondary/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
-            </div>
-            <input
-              type="search"
-              :value="busquedaStore.termino"
-              @input="handleBusquedaInput"
-              placeholder="Buscar en el sitio..."
-              class="w-full pl-9 pr-3 py-2 border border-uancv-border rounded-md text-sm text-uancv-blue-dark bg-white placeholder:text-uancv-text-secondary/80 focus:outline-none focus:ring-2 focus:ring-uancv-red/50 focus:border-uancv-red transition"
-              @focus="resultadosStore.mostrarResultados = true"
-              @blur="handleBlur"
-              aria-label="Buscar en el sitio"
-              autocomplete="off"
-            />
+        <div class="relative w-64 flex-shrink-0"> 
+          <input 
+            type="search" 
+            placeholder="Buscar en el sitio..." 
+            class="w-full pl-4 pr-10 py-2 border border-uancv-border text-sm text-uancv-blue-dark placeholder:text-uancv-text-secondary/80 focus:outline-none focus:ring-2 focus:ring-uancv-red/50 focus:border-uancv-red transition"
+            :value="busquedaStore.termino"
+            @input="handleBusquedaInput"
+            @focus="resultadosStore.mostrarResultados = true"
+            @blur="handleBlur"
+            aria-label="Buscar en el sitio"
+            autocomplete="off"
+          >
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <svg class="w-5 h-5 text-uancv-text-secondary/60" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
           </div>
         </div>
 
@@ -127,8 +167,30 @@ const tipoResultadoTexto = (tipo) => {
 };
 
 watch(() => busquedaStore.termino, (nuevoTermino) => {
-    if (!nuevoTermo) {
+    if (!nuevoTermino) {
         resultadosStore.limpiarYocultarResultados();
     }
 });
 </script>
+
+<style scoped>
+.nav-link, .nav-link-button {
+  @apply flex items-center h-full px-4 text-sm font-semibold border-b-4 transition-colors duration-200 text-uancv-text-secondary border-transparent;
+}
+.nav-link:hover, .nav-link-button:hover,
+.group:hover .nav-link-button {
+  @apply text-uancv-red border-uancv-red/50 bg-uancv-bg;
+}
+.nav-link.router-link-exact-active {
+  @apply text-uancv-red border-uancv-red;
+}
+.mega-menu {
+  @apply absolute top-full left-0 w-full bg-white shadow-xl mt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-30 border-x border-b border-uancv-border;
+}
+.mega-menu-title {
+  @apply font-bold text-uancv-blue-dark tracking-wide;
+}
+.mega-menu-link {
+  @apply block text-sm text-uancv-text-secondary hover:text-uancv-red hover:translate-x-1 transition-all;
+}
+</style>
