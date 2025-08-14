@@ -1,83 +1,80 @@
 <template>
-  <footer class="bg-gray-800 text-gray-300">
-    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+  <footer class="bg-uancv-blue-dark text-white">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         
-        <!-- Columna 1: Logo e Información Principal -->
+        <!-- Columna 1: Logo y Contacto -->
         <div class="space-y-4">
-          <div class="flex items-center space-x-3">
-            <img class="h-12 w-auto" src="@/assets/img/logo2025.png" alt="Logo UGEL Puno">
-            <div>
-              <p class="font-bold text-white text-lg leading-tight">UGEL PUNO</p>
-              <p class="text-xs text-gray-400">Unidad Ejecutora 311</p>
-            </div>
+          <router-link to="/" class="inline-block">
+            <img class="h-14 w-auto" src="https://economia.uancv.edu.pe/web/escuela/logos_uancv/logo_uancv.png" alt="Logo UANCV">
+          </router-link>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Comprometidos con la excelencia académica y el desarrollo profesional de la región sur del Perú.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" aria-label="Facebook" class="text-slate-300 hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v2.385z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter" class="text-slate-300 hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.298 1.634 4.212 3.791 4.649-.69.188-1.432.23-2.164.084.616 1.923 2.394 3.315 4.491 3.354-1.786 1.394-4.049 2.162-6.522 1.835 2.318 1.491 5.077 2.353 8.046 2.353 8.4 0 12.997-7.311 12.6-13.36 1.007-.723 1.875-1.624 2.572-2.673z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="text-slate-300 hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+            </a>
           </div>
-          <p class="text-sm">
-            Jr. Cesar Augusto Sandino N° 225, Urb. Chanu Chanu – Puno
-          </p>
-          <p class="text-sm">
-            Teléfono: (051) 368114
-          </p>
         </div>
 
-        <!-- Columna 2: Enlaces de Navegación -->
-        <div class="md:col-start-2 lg:col-start-auto">
-          <h3 class="text-sm font-semibold text-white tracking-wider uppercase mb-4">Navegación</h3>
-          <ul class="space-y-2 text-sm">
-            <li><router-link to="/noticias" class="hover:text-white transition-colors">Noticias</router-link></li>
-            <li><router-link to="/comunicados" class="hover:text-white transition-colors">Comunicados</router-link></li>
-            <li><router-link to="/directorio" class="hover:text-white transition-colors">Directorio</router-link></li>
-            <li><router-link to="/portalTransparencia" class="hover:text-white transition-colors">Transparencia</router-link></li>
+        <!-- Columna 2: Navegación -->
+        <div class="md:justify-self-center">
+          <h3 class="text-sm font-bold tracking-wider uppercase text-white">Navegación</h3>
+          <ul class="mt-4 space-y-3">
+            <li><router-link to="/programas" class="text-sm text-slate-300 hover:text-white transition-colors">Programas Académicos</router-link></li>
+            <li><router-link to="/admision" class="text-sm text-slate-300 hover:text-white transition-colors">Admisión</router-link></li>
+            <li><router-link to="/licenciamiento" class="text-sm text-slate-300 hover:text-white transition-colors">Proceso de Licenciamiento</router-link></li>
+            <li><router-link to="/noticias" class="text-sm text-slate-300 hover:text-white transition-colors">Noticias y Eventos</router-link></li>
+            <li><router-link to="/contacto" class="text-sm text-slate-300 hover:text-white transition-colors">Contacto</router-link></li>
           </ul>
         </div>
 
-        <!-- Columna 3: Enlaces de Interés -->
-        <div >
-          <h3 class="text-sm font-semibold text-white tracking-wider uppercase mb-4">Enlaces de Interés</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:text-white transition-colors">MINEDU</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Plataforma PerúEduca</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">SIAGIE</a></li>
+        <!-- Columna 3: Enlaces Institucionales -->
+        <div class="md:justify-self-center">
+          <h3 class="text-sm font-bold tracking-wider uppercase text-white">Institucional</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="#" class="text-sm text-slate-300 hover:text-white transition-colors">Portal de Transparencia</a></li>
+            <li><a href="#" class="text-sm text-slate-300 hover:text-white transition-colors">Convenios</a></li>
+            <li><a href="#" class="text-sm text-slate-300 hover:text-white transition-colors">Directorio Institucional</a></li>
+            <li><a href="#" class="text-sm text-slate-300 hover:text-white transition-colors">Repositorio Institucional</a></li>
+            <li><a href="#" class="text-sm text-slate-300 hover:text-white transition-colors">Libro de Reclamaciones</a></li>
           </ul>
         </div>
         
-        <!-- Columna 4: Libro de Reclamaciones -->
+        <!-- Columna 4: Boletín -->
         <div>
-          <h3 class="text-sm font-semibold text-white tracking-wider uppercase mb-4">Atención al Ciudadano</h3>
-          <a href="#" class="inline-block bg-gray-700 hover:bg-gray-600 p-4 rounded-lg transition-colors w-full">
-            <div class="flex items-center space-x-3">
-              <img class="h-10 w-10 flex-shrink-0" src="@/assets/img/libro-con-marcapaginas.png" alt="Libro de Reclamaciones">
-              <div>
-                <p class="font-semibold text-white">Libro de Reclamaciones</p>
-                <p class="text-xs text-gray-400">Reglamento D.S. N° 007-2020-PCM</p>
-              </div>
-            </div>
-          </a>
+          <h3 class="text-sm font-bold tracking-wider uppercase text-white">Boletín Informativo</h3>
+          <p class="mt-4 text-sm text-slate-300">
+            Suscríbete para recibir las últimas noticias y eventos de nuestra comunidad.
+          </p>
+          <form class="mt-4 flex flex-col sm:flex-row gap-2">
+            <label for="email-address" class="sr-only">Correo electrónico</label>
+            <input type="email" name="email-address" id="email-address" autocomplete="email" required placeholder="tu.correo@email.com" class="w-full px-4 py-2 border-0 rounded-md bg-white/10 text-white placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-uancv-red">
+            <button type="submit" class="bg-uancv-red hover:bg-uancv-red/90 text-white font-bold px-4 py-2 rounded-md transition-colors">
+              Suscribirse
+            </button>
+          </form>
         </div>
 
       </div>
 
-      <div class="mt-8 pt-8 border-t border-gray-700 flex flex-col sm:flex-row justify-between items-center">
-        <p class="text-sm text-gray-400 text-center sm:text-left">
-          &copy; {{ new Date().getFullYear() }} UGEL Puno. Todos los derechos reservados.
+      <!-- Sub-Footer -->
+      <div class="mt-12 pt-8 border-t border-white/10 text-center">
+        <p class="text-xs text-slate-400">
+          &copy; {{ new Date().getFullYear() }} Universidad Andina Néstor Cáceres Velásquez. Todos los derechos reservados.
         </p>
-        <div class="flex space-x-4 mt-4 sm:mt-0">
-          <a href="https://www.facebook.com/UgelPunoOficial/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
-          </a>
-          <a href="https://www.youtube.com/@UGELPUNO" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 01-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 01-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 011.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418zM9.999 15.199l4.987-3.2-4.987-3.2v6.4z" clip-rule="evenodd" /></svg>
-          </a>
-        </div>
       </div>
     </div>
   </footer>
 </template>
 
 <script setup>
-// No necesita lógica de JS, todo es estático o usa router-link
+// No se necesita lógica de script para este componente de footer estático.
 </script>
-
-<style scoped>
-/* Estilos adicionales si son necesarios */
-</style>

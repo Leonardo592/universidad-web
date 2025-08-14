@@ -1,86 +1,81 @@
 <template>
   <div>
+    <!-- 1. Carrusel de bienvenida a pantalla completa -->
     <Carousel />
-    <Services />
 
-    <div class="bg-white py-8">
-      <div class="max-w-screen-xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-9 gap-0">
-          <div class="lg:col-span-6 px-4 sm:px-6 lg:px-0 lg:pr-4">
-            <Noticias />
-          </div>
-          <div class="lg:col-span-3 px-4 sm:px-6 lg:px-0">
-            <Comunicados />
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- 2. Barra de propuesta de valor (la que tiene el layout asimétrico) -->
+    <ProgramHighlightBar />
 
-    <SeccionVideosRecientes />
+    <!-- 3. Sección de cifras clave de la universidad -->
+    <StatsSection />
+    
+    <!-- 4. Sección de 'Por qué elegirnos' con imagen y lista de valores -->
+    <ValueProposition />
 
-    <div class="bg-gray-100 py-8 sm:py-12 lg:py-16">
+    <!-- 5. Sección de los campus con imágenes destacadas -->
+    <CampusSection />
+
+    <!-- 6. Sección de noticias recientes (puedes expandir esto más adelante) -->
+    <section class="bg-uancv-bg py-16 sm:py-24">
       <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          
-          <div class="flex flex-col space-y-6 lg:space-y-8">
-            <div class="bg-white p-6 shadow-md flex-1 flex flex-col relative overflow-hidden rounded-lg">
-              <div class="absolute inset-0 bg-cover bg-center opacity-5" :style="{ backgroundImage: `url(${fondoMisionVision})` }"></div>
-              <div class="relative z-10 flex flex-col flex-grow">
-                <h2 class="text-xl font-bold text-gray-900 mb-3">Nuestra Misión</h2>
-                <p class="text-gray-600 leading-relaxed text-sm flex-grow">
-                  Garantizar un servicio educativo de calidad en todos los niveles y modalidades, fortaleciendo la gestión escolar, el desempeño docente y la participación comunitaria para formar ciudadanos competentes, críticos y comprometidos con el desarrollo sostenible de Puno.
-                </p>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold font-sans text-uancv-blue-dark tracking-tight">
+            Mantente Informado
+          </h2>
+          <p class="mt-4 max-w-2xl mx-auto text-lg text-uancv-text-secondary">
+            Descubre las últimas noticias, eventos y logros de nuestra comunidad universitaria.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Ejemplo de tarjeta de noticia -->
+          <div class="bg-white shadow-lg overflow-hidden group transition-transform duration-300 hover:-translate-y-2">
+            <router-link to="/noticias/slug-de-la-noticia-1" class="block">
+              <img src="https://images.unsplash.com/photo-1579226905180-636b76d96082?q=80&w=1974" alt="Imagen de la noticia" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <p class="text-sm font-semibold text-uancv-red">Noticia</p>
+                <h3 class="mt-2 text-lg font-bold text-uancv-blue-dark group-hover:text-uancv-red transition-colors">
+                  La UANCV inicia ciclo de conferencias sobre innovación contable
+                </h3>
               </div>
-            </div>
-            <div class="bg-white p-6 shadow-md flex-1 flex flex-col relative overflow-hidden rounded-lg">
-              <div class="absolute inset-0 bg-cover bg-center opacity-5" :style="{ backgroundImage: `url(${fondoMisionVision})` }"></div>
-              <div class="relative z-10 flex flex-col flex-grow">
-                <h2 class="text-xl font-bold text-gray-900 mb-3">Nuestra Visión</h2>
-                <p class="text-gray-600 leading-relaxed text-sm flex-grow">
-                  Ser una Unidad de Gestión Educativa Local líder en la región, reconocida por su excelencia, innovación y transparencia, que contribuye activamente a la formación integral de personas y al desarrollo social, cultural y económico de la provincia de Puno.
-                </p>
-              </div>
-            </div>
+            </router-link>
           </div>
-          
-          <div class="bg-white shadow-md flex flex-col  overflow-hidden">
-            <div class="p-6">
-              <h2 class="text-xl font-bold text-gray-900">Síguenos en Facebook</h2>
-              <hr class="border-custom-red/30 my-3">
-            </div>
-            <div class="px-1 pb-1 pt-0 flex-grow flex justify-center items-start">
-              <div class="w-full max-w-[340px] h-[460px]">
-                <iframe
-                  :src="facebookPageUrl"
-                  style="border:none;overflow:hidden;width:100%;height:100%;"
-                  scrolling="no"
-                  frameborder="0"
-                  allowfullscreen="true"
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                  title="Página de Facebook de UGEL Puno Oficial"
-                ></iframe>
+          <div class="bg-white shadow-lg overflow-hidden group transition-transform duration-300 hover:-translate-y-2">
+            <router-link to="/noticias/slug-de-la-noticia-2" class="block">
+              <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932" alt="Imagen de la noticia" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <p class="text-sm font-semibold text-uancv-red">Convenio</p>
+                <h3 class="mt-2 text-lg font-bold text-uancv-blue-dark group-hover:text-uancv-red transition-colors">
+                  Alianza estratégica firmada con la Cámara de Comercio de Juliaca
+                </h3>
               </div>
-            </div>
+            </router-link>
           </div>
-
-          <AsistenciaTecnica />
+          <div class="bg-white shadow-lg overflow-hidden group transition-transform duration-300 hover:-translate-y-2">
+            <router-link to="/noticias/slug-de-la-noticia-3" class="block">
+              <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070" alt="Imagen de la noticia" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <p class="text-sm font-semibold text-uancv-red">Evento</p>
+                <h3 class="mt-2 text-lg font-bold text-uancv-blue-dark group-hover:text-uancv-red transition-colors">
+                  Exitoso taller de liderazgo para estudiantes de Administración
+                </h3>
+              </div>
+            </router-link>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <EntidadesAdjuntas />
+    <!-- 7. Sección de logos de respaldo y confianza -->
+    <TrustLogos />
+
   </div>
 </template>
 
 <script setup>
-import Carousel from "@/components/layout/carousel.vue";
-import Services from "@/components/common/services.vue";
-import Noticias from "@/components/page/noticias/noticias.vue";
-import Comunicados from "@/components/page/comunicados/comunicados.vue";
-import SeccionVideosRecientes from '@/components/home/SeccionVideosRecientes.vue';
-import EntidadesAdjuntas from '@/components/layout/entidadesAdjuntas.vue';
-import AsistenciaTecnica from '@/components/layout/AsistenciaTecnica.vue';
-import fondoMisionVision from '@/assets/img/fondo.png';
-
-const facebookPageUrl = "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fugelpunooficial&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId";
+import Carousel from '@/components/layout/carousel.vue';
+import ProgramHighlightBar from '@/components/layout/ProgramHighlightBar.vue';
+import StatsSection from '@/components/home/StatsSection.vue';
+import ValueProposition from '@/components/home/ValueProposition.vue';
+import CampusSection from '@/components/home/CampusSection.vue';
+import TrustLogos from '@/components/home/TrustLogos.vue';
 </script>
