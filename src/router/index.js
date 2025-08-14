@@ -82,6 +82,12 @@ const routes = [
         name: "portalTransparencia",
         component: () => import("@/components/page/portalTransparencia.vue"),
       },
+
+      {
+        path: "administracion-marketing",
+        name: "administracion-marketing",
+        component: () => import("@/components/page/carreras/administracionMarketing.vue"),
+      },
     ],
   },
   {
