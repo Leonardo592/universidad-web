@@ -42,7 +42,7 @@
                   <div>
                     <h4 class="mega-menu-title">Pregrado</h4>
                     <ul class="mt-4 space-y-3">
-                      <li><router-link to="/programas/contabilidad" class="mega-menu-link">Contabilidad y Finanzas</router-link></li>
+                      <li><router-link to="/programas/administracion" class="mega-menu-link">Contabilidad y Finanzas</router-link></li>
                       <li><router-link to="/programas/administracion" class="mega-menu-link">Administración de Empresas</router-link></li>
                     </ul>
                   </div>

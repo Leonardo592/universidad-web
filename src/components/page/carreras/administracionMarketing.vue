@@ -16,7 +16,7 @@
             </div>
 
             <!-- Formulario -->
-            <div class="bg-white rounded-xl shadow-2xl p-6 w-full max-w-sm">
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 w-full max-w-sm">
                 <h2 class="text-xl font-bold mb-4 text-gray-800">Recibe asesoría</h2>
                 <form class="space-y-1">
                     <div>
@@ -65,64 +65,79 @@
                     </h2>
                 </div>
 
+                <div class="max-w-3xl mx-auto py-8">
+                    <div v-for="(item, i) in items" :key="i" class="border border-uancv-red rounded-lg mb-3">
+                        <button @click="toggleAccordion(i)" class="w-full flex items-center gap-4 p-4 text-left">
+                            <span class="text-3xl font-bold text-uancv-red">{{ i + 1 }}</span>
+                            <span class="flex-1 font-bold">{{ item.title }}</span>
+                            <span id="icon-1" class="text-slate-800 transition-transform duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                                    class="w-4 h-4">
+                                    <path
+                                        d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div ref="contents" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+                            :style="{ maxHeight: openIndex === i ? contentHeights[i] + 'px' : '0px' }">
+                            <div class="px-12 pb-4 text-gray-700 text-sm">
+                                {{ item.text }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <p class="text-gray-700 mb-4 text-justify">
-                    La carrera de Administración te brinda las herramientas necesarias para liderar,
-                    tomar decisiones estratégicas y gestionar recursos de forma eficiente en
-                    organizaciones de todo tipo. Aprenderás sobre gestión de empresas, marketing,
-                    finanzas y recursos humanos, desarrollando una visión integral del mundo empresarial.
-                </p>
             </div>
 
             <!-- Imagen -->
             <div class="flex justify-center">
-                <img src="https://usap.edu/2024/wp-content/uploads/2024/02/administrator-business-people-financial-inspector-2023-11-27-05-19-50-utc-2048x1365.jpg" alt="Estudiar Administración"
-                    class="rounded-lg shadow-lg object-cover w-full max-w-md" />
+                <img src="https://usap.edu/2024/wp-content/uploads/2024/02/administrator-business-people-financial-inspector-2023-11-27-05-19-50-utc-2048x1365.jpg"
+                    alt="Estudiar Administración" class="rounded-lg shadow-lg object-cover w-full max-w-md" />
             </div>
 
         </div>
     </section>
 
-    <section class="bg-slate-700 py-16">
+    <section class="bg-uancv-red py-16">
         <div class="container mx-auto px-6 text-center">
             <!-- Título -->
-            <h2 class="text-3xl font-bold text-uancv-blue-dark bg-uancv-red inline-block px-6 py-2 rounded">
+            <h2 class="text-3xl font-bold text-white bg-uancv-red inline-block px-6 py-2 rounded">
                 Competencias específicas
             </h2>
 
             <!-- Cards -->
             <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
 
-                <div class="group bg-uancv-red text-white p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
-                  transition-all duration-300 hover:bg-yellow-400 hover:text-blue-900 cursor-pointer">
+                <div class="group bg-gray-50 text-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
+                  transition-all duration-300 hover:bg-gray-300 hover:text-blue-900 cursor-pointer">
                     <img src="@/assets/servicesImg/boleta.png" alt="Administración"
                         class="w-12 h-12 mb-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1" />
                     <p class="font-medium">Administración y liderazgo</p>
                 </div>
 
-                <div class="group bg-uancv-red text-white p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
-                  transition-all duration-300 hover:bg-yellow-400 hover:text-blue-900 cursor-pointer">
+                <div class="group bg-gray-50 text-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
+                  transition-all duration-300 hover:bg-gray-300 hover:text-blue-900 cursor-pointer">
                     <img src="@/assets/servicesImg/boleta.png" alt="Gestión del talento"
                         class="w-12 h-12 mb-4 fill-current text-white transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:text-blue-900" />
                     <p class="font-medium">Gestión del talento</p>
                 </div>
 
-                <div class="group bg-uancv-red text-white p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
-                  transition-all duration-300 hover:bg-yellow-400 hover:text-blue-900 cursor-pointer">
+                <div class="group bg-gray-50 text-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
+                  transition-all duration-300 hover:bg-gray-300 hover:text-blue-900 cursor-pointer">
                     <img src="@/assets/servicesImg/boleta.png" alt="Marketing"
                         class="w-12 h-12 mb-4 fill-current text-white transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:text-blue-900" />
                     <p class="font-medium">Marketing</p>
                 </div>
 
-                <div class="group bg-uancv-red text-white p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
-                  transition-all duration-300 hover:bg-yellow-400 hover:text-blue-900 cursor-pointer">
+                <div class="group bg-gray-50 text-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
+                  transition-all duration-300 hover:bg-gray-300 hover:text-blue-900 cursor-pointer">
                     <img src="@/assets/servicesImg/boleta.png" alt="Finanzas"
                         class="w-12 h-12 mb-4 fill-current text-white transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:text-blue-900" />
                     <p class="font-medium">Finanzas</p>
                 </div>
 
-                <div class="group bg-uancv-red text-white p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
-                  transition-all duration-300 hover:bg-yellow-400 hover:text-blue-900 cursor-pointer">
+                <div class="group bg-gray-50 text-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
+                  transition-all duration-300 hover:bg-gray-300 hover:text-blue-900 cursor-pointer">
                     <img src="@/assets/servicesImg/boleta.png" alt="Investigación"
                         class="w-12 h-12 mb-4 fill-current text-white transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:text-blue-900" />
                     <p class="font-medium">Investigación</p>
@@ -133,21 +148,13 @@
     </section>
 
     <section class="bg-white py-16">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center justify-center max-w-5xl">
 
-            <!-- Imagen con íconos -->
-            <div class="relative flex justify-center">
-                <div class="bg-gray-100 rounded-lg overflow-hidden p-4 relative">
-                    <img src="https://www.autonoma.pe/wp-content/uploads/2023/08/web-2025_505-x-600-adm-y-mkt.png" alt="Profesional" class="rounded-lg" />
-
-                    <!-- Ícono superior -->
-                    <div class="absolute -top-4 -left-4 bg-cyan-400 p-3 rounded-lg shadow-lg">
-                        <img src="@/assets/icons/handshake.svg" alt="Icono" class="w-6 h-6" />
-                    </div>
-                    <!-- Ícono inferior -->
-                    <div class="absolute -bottom-4 -right-4 bg-green-400 p-3 rounded-lg shadow-lg">
-                        <img src="@/assets/icons/key.svg" alt="Icono" class="w-6 h-6" />
-                    </div>
+            <!-- Imagen -->
+            <div class="flex justify-center">
+                <div class="bg-gray-100 rounded-lg overflow-hidden p-4">
+                    <img src="https://img.freepik.com/foto-gratis/crecimiento-mi-empresa-es-impresionante_329181-11409.jpg?semt=ais_hybrid&w=360&q=40"
+                        alt="Profesional" class="rounded-lg" />
                 </div>
             </div>
 
@@ -156,7 +163,7 @@
                 <p class="text-sm font-semibold text-gray-600 tracking-wider uppercase">
                     Profesionales con principios
                 </p>
-                <h2 class="text-2xl font-bold text-uancv-blue-dark bg-uancv-gold inline-block px-4 py-1 mt-2 rounded">
+                <h2 class="text-2xl font-bold text-uancv-blue-dark inline-block px-4 py-1 mt-2 rounded">
                     Campo laboral
                 </h2>
 
@@ -177,66 +184,98 @@
         </div>
     </section>
 
+    <section class="bg-uancv-red text-white py-16">
+        <div class="max-w-6xl mx-auto px-8">
+            <h2 class="text-3xl font-bold mb-12">
+                Malla curricular de Administración y Marketing
+            </h2>
+
+            <!-- Carrusel -->
+            <Swiper :modules="[Navigation]" :slides-per-view="4" :slides-per-group="1" :space-between="20" navigation
+                :loop="false" class="pb-10" :breakpoints="{
+                    320: { slidesPerView: 1, slidesPerGroup: 1 },
+                    768: { slidesPerView: 2, slidesPerGroup: 1 },
+                    1024: { slidesPerView: 4, slidesPerGroup: 1 }
+                }">
+                <SwiperSlide v-for="(ciclo, index) in malla" :key="index"
+                    class="bg-white text-black rounded-lg overflow-hidden shadow-lg">
+                    <div class="bg-uancv-blue-dark text-white flex items-center px-4 py-2">
+                        <span class="text-2xl font-bold mr-2">{{ ciclo.numero }}</span>
+                        <span class="uppercase font-semibold">ciclo</span>
+                    </div>
+
+                    <ul>
+                        <li v-for="(curso, i) in ciclo.cursos" :key="i" class="px-4 py-2 border-b border-gray-200">
+                            {{ curso }}
+                        </li>
+                    </ul>
+                </SwiperSlide>
+            </Swiper>
+        </div>
+    </section>
+
 
 </template>
 
 
 <script setup>
-import { ref, onMounted, watch } from "vue";
-import { useRoute, useRouter } from 'vue-router';
-import { useNoticiasStore } from "@/stores/noticias";
-import { useCategoriasNoticiaStore } from "@/stores/categoriasNoticia";
-import cardNotice from "@/components/Ui/cardNotice.vue";
-import pagination from "@/components/common/pagination.vue";
+import { ref, onMounted, watch, nextTick } from "vue";
 
-const store = useNoticiasStore();
-const storeCategorias = useCategoriasNoticiaStore();
-const route = useRoute();
-const router = useRouter();
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
-const currentYear = new Date().getFullYear();
-const filtroCategoriaId = ref(route.query.categoria_id ? parseInt(route.query.categoria_id) : null);
-const filtroAnio = ref(route.query.anio ? parseInt(route.query.anio) : currentYear);
-const ordenSeleccionado = ref(route.query.orden || "reciente");
+const items = ref([
+    {
+        title: 'Formación integral en gestión empresarial',
+        text: 'Aprende a planificar, organizar y dirigir estrategias para el éxito de cualquier tipo de organización.'
+    },
+    {
+        title: 'Enfoque en liderazgo y toma de decisiones',
+        text: 'Desarrolla habilidades para liderar equipos, gestionar recursos y resolver problemas de manera efectiva.'
+    },
+    {
+        title: 'Conocimiento en finanzas, marketing y recursos humanos',
+        text: 'Domina las áreas clave para el funcionamiento y crecimiento de una empresa.'
+    },
+    {
+        title: 'Oportunidades laborales en múltiples sectores',
+        text: 'Accede a un amplio campo de trabajo en empresas privadas, organismos públicos o emprendimientos propios.'
+    }
+])
 
-const cargarNoticias = (query) => {
-    store.fetchNoticias({
-        page: query.page || 1,
-        per_page: 12,
-        categoria_id: query.categoria_id || undefined,
-        anio: query.anio == currentYear ? undefined : query.anio,
-        orden: query.orden || 'reciente',
-    });
-};
+const openIndex = ref(null)
+const contentHeights = ref([])
+const contents = ref([])
+
+const toggleAccordion = async (index) => {
+    if (openIndex.value === index) {
+        openIndex.value = null
+    } else {
+        openIndex.value = index
+        await nextTick()
+        contentHeights.value[index] = contents.value[index].scrollHeight
+    }
+}
 
 onMounted(() => {
-    storeCategorias.fetchItems();
-});
+    contents.value = contents.value.slice()
+})
 
-watch(() => route.query, (newQuery) => {
-    filtroCategoriaId.value = newQuery.categoria_id ? parseInt(newQuery.categoria_id) : null;
-    filtroAnio.value = newQuery.anio ? parseInt(newQuery.anio) : currentYear;
-    ordenSeleccionado.value = newQuery.orden || "reciente";
-    cargarNoticias(newQuery);
-}, { immediate: true });
+const malla = ref([
+    { numero: 1, cursos: ["Matemática I", "Física I", "Introducción a la Aeronáutica"] },
+    { numero: 2, cursos: ["Matemática II", "Física II", "Aerodinámica I"] },
+    { numero: 3, cursos: ["Mecánica de Fluidos", "Termodinámica", "Estructuras I"] },
+    { numero: 4, cursos: ["Electrónica", "Materiales", "Propulsión"] },
+    { numero: 5, cursos: ["Control de Vuelo", "Sistemas Aeronáuticos", "Aerodinámica II"] },
+    { numero: 6, cursos: ["Diseño Aeronáutico", "Simulación de Vuelo", "Taller Avanzado"] },
+    { numero: 7, cursos: ["Gestión Aeronáutica", "Mantenimiento", "Seguridad Aérea"] },
+    { numero: 8, cursos: ["Proyecto Final", "Práctica Profesional", "Examen de Grado"] }
+]);
 
-const aplicarFiltros = () => {
-    const query = {};
-    if (filtroCategoriaId.value) query.categoria_id = filtroCategoriaId.value;
-    if (filtroAnio.value !== currentYear) query.anio = filtroAnio.value;
-    if (ordenSeleccionado.value !== 'reciente') query.orden = ordenSeleccionado.value;
 
-    router.push({ name: 'noticias', query });
-};
-
-const cambiarPagina = (newPage) => {
-    router.push({ name: 'noticias', query: { ...route.query, page: newPage } });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-};
-
-const verNoticia = (noticia) => {
-    router.push({ name: 'noticiaCompleta', params: { id: noticia.id } });
-};
 </script>
 
 <style scoped>
@@ -254,5 +293,45 @@ const verNoticia = (noticia) => {
 
 .input {
     @apply w-full border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-uancv-red;
+}
+
+.accordion-enter-active,
+.accordion-leave-active {
+    transition: max-height 0.4s ease;
+}
+
+.accordion-enter-from,
+.accordion-leave-to {
+    max-height: 0;
+}
+
+.accordion-enter-to,
+.accordion-leave-from {
+    max-height: 500px;
+    /* suficiente para mostrar el contenido */
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Fondo oscuro */
+    color: white;
+    /* Color de la flecha */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Cambiar tamaño de la flecha interna */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Botón desactivado (cuando no hay más slides) */
+.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 </style>
