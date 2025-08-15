@@ -96,6 +96,19 @@
                       <li><router-link to="/noticias" class="mega-menu-link">Noticias y Eventos</router-link></li>
                     </ul>
                   </div>
+                  <div>
+                    <h4 class="mega-menu-title">Oficinas</h4>
+                    <ul class="mt-4 space-y-3">
+                      <li><router-link to="/licenciamiento" class="mega-menu-link">Otit</router-link></li>
+                      <li><router-link to="/transparencia" class="mega-menu-link">oficina General de Investigación</router-link></li>
+                      <li><router-link to="/reglamentos" class="mega-menu-link">Oficina de Planificación</router-link></li>
+                      <li><router-link to="/reglamentos" class="mega-menu-link">Bienestar Universitario</router-link></li>
+                      <li><router-link to="/reglamentos" class="mega-menu-link">Responsabilidad Social</router-link></li>
+                      <li><router-link to="/reglamentos" class="mega-menu-link">Defensoría Universitaria</router-link></li>
+                      <li><router-link to="/reglamentos" class="mega-menu-link">Registro Central</router-link></li>
+                      <li><router-link to="/reglamentos" class="mega-menu-link">Gestión de Calidad</router-link></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </li>

@@ -55,15 +55,18 @@
 
     <!-- Sección informativa -->
     <section class="py-16 bg-gray-50">
+
+        <div class="text-center">
+            <h2 class="text-3xl font-bold mb-4 text-uancv-blue-dark border-l-8 border-uancv-blue-dark pl-4 inline-block">
+                ¿Por qué estudiar Administración?
+            </h2>
+        </div>
+
         <div class="container mx-auto px-6 max-w-3xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 
             <!-- Texto -->
             <div>
-                <div class="text-center">
-                    <h2 class="text-3xl font-bold mb-4 text-blue-900">
-                        ¿Por qué estudiar Administración?
-                    </h2>
-                </div>
+
 
                 <div class="max-w-3xl mx-auto py-8">
                     <div v-for="(item, i) in items" :key="i" class="border border-uancv-red rounded-lg mb-3">
@@ -106,46 +109,48 @@
             </h2>
 
             <!-- Cards -->
-            <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
+            <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 
+                    justify-items-center max-w-[900px] mx-auto">
 
-                <div class="group bg-gray-50 text-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
-                  transition-all duration-300 hover:bg-gray-300 hover:text-blue-900 cursor-pointer">
-                    <img src="@/assets/servicesImg/boleta.png" alt="Administración"
-                        class="w-12 h-12 mb-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1" />
-                    <p class="font-medium">Administración y liderazgo</p>
+                <div class="group bg-gray-50 text-gray-700 p-5 rounded-lg shadow-lg flex flex-col items-center w-36
+              transition-all duration-300 hover:bg-amber-300 hover:text-blue-900 cursor-pointer">
+                    <img src="@/assets/servicesImg/boleta.png" alt="Administración" class="w-10 h-10 mb-4 transform transition-transform duration-300 
+                           group-hover:scale-110 group-hover:-translate-y-1" />
+                    <p class="font-medium text-sm">Administración y liderazgo</p>
                 </div>
 
-                <div class="group bg-gray-50 text-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
-                  transition-all duration-300 hover:bg-gray-300 hover:text-blue-900 cursor-pointer">
-                    <img src="@/assets/servicesImg/boleta.png" alt="Gestión del talento"
-                        class="w-12 h-12 mb-4 fill-current text-white transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:text-blue-900" />
-                    <p class="font-medium">Gestión del talento</p>
+                <div class="group bg-gray-50 text-gray-700 p-5 rounded-lg shadow-lg flex flex-col items-center w-36
+              transition-all duration-300 hover:bg-amber-300 hover:text-blue-900 cursor-pointer">
+                    <img src="@/assets/servicesImg/boleta.png" alt="Gestión del talento" class="w-10 h-10 mb-4 transform transition-transform duration-300 
+                           group-hover:scale-110 group-hover:-translate-y-1" />
+                    <p class="font-medium text-sm">Gestión del talento</p>
                 </div>
 
-                <div class="group bg-gray-50 text-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
-                  transition-all duration-300 hover:bg-gray-300 hover:text-blue-900 cursor-pointer">
-                    <img src="@/assets/servicesImg/boleta.png" alt="Marketing"
-                        class="w-12 h-12 mb-4 fill-current text-white transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:text-blue-900" />
-                    <p class="font-medium">Marketing</p>
+                <div class="group bg-gray-50 text-gray-700 p-5 rounded-lg shadow-lg flex flex-col items-center w-36
+              transition-all duration-300 hover:bg-amber-300 hover:text-blue-900 cursor-pointer">
+                    <img src="@/assets/servicesImg/boleta.png" alt="Marketing" class="w-10 h-10 mb-4 transform transition-transform duration-300 
+                           group-hover:scale-110 group-hover:-translate-y-1" />
+                    <p class="font-medium text-sm">Marketing</p>
                 </div>
 
-                <div class="group bg-gray-50 text-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
-                  transition-all duration-300 hover:bg-gray-300 hover:text-blue-900 cursor-pointer">
-                    <img src="@/assets/servicesImg/boleta.png" alt="Finanzas"
-                        class="w-12 h-12 mb-4 fill-current text-white transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:text-blue-900" />
-                    <p class="font-medium">Finanzas</p>
+                <div class="group bg-gray-50 text-gray-700 p-5 rounded-lg shadow-lg flex flex-col items-center w-36
+              transition-all duration-300 hover:bg-amber-300 hover:text-blue-900 cursor-pointer">
+                    <img src="@/assets/servicesImg/boleta.png" alt="Finanzas" class="w-10 h-10 mb-4 transform transition-transform duration-300 
+                           group-hover:scale-110 group-hover:-translate-y-1" />
+                    <p class="font-medium text-sm">Finanzas</p>
                 </div>
 
-                <div class="group bg-gray-50 text-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center w-48 
-                  transition-all duration-300 hover:bg-gray-300 hover:text-blue-900 cursor-pointer">
-                    <img src="@/assets/servicesImg/boleta.png" alt="Investigación"
-                        class="w-12 h-12 mb-4 fill-current text-white transform transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:text-blue-900" />
-                    <p class="font-medium">Investigación</p>
+                <div class="group bg-gray-50 text-gray-700 p-5 rounded-lg shadow-lg flex flex-col items-center w-36
+              transition-all duration-300 hover:bg-amber-300 hover:text-blue-900 cursor-pointer">
+                    <img src="@/assets/servicesImg/boleta.png" alt="Investigación" class="w-10 h-10 mb-4 transform transition-transform duration-300 
+                           group-hover:scale-110 group-hover:-translate-y-1" />
+                    <p class="font-medium text-sm">Investigación</p>
                 </div>
 
             </div>
         </div>
     </section>
+
 
     <section class="bg-white py-16">
         <div class="mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center justify-center max-w-5xl">
@@ -160,10 +165,8 @@
 
             <!-- Texto -->
             <div>
-                <p class="text-sm font-semibold text-gray-600 tracking-wider uppercase">
-                    Profesionales con principios
-                </p>
-                <h2 class="text-2xl font-bold text-uancv-blue-dark inline-block px-4 py-1 mt-2 rounded">
+                <h2
+                    class="text-2xl font-bold border-l-8 border-uancv-blue-dark text-uancv-blue-dark inline-block px-4 py-1 mt-2">
                     Campo laboral
                 </h2>
 
@@ -186,7 +189,7 @@
 
     <section class="bg-uancv-red text-white py-16">
         <div class="max-w-6xl mx-auto px-8">
-            <h2 class="text-3xl font-bold mb-12">
+            <h2 class="text-3xl font-bold mb-12 border-l-8 pl-2 border-white">
                 Malla curricular de Administración y Marketing
             </h2>
 
@@ -292,7 +295,7 @@ const malla = ref([
 }
 
 .input {
-    @apply w-full border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-uancv-red;
+    @apply w-full pl-4 pr-10 py-2 border border-uancv-border text-sm text-uancv-blue-dark placeholder:text-uancv-text-secondary/80 focus:outline-none focus:ring-2 focus:ring-uancv-red/50 focus:border-uancv-red transition;
 }
 
 .accordion-enter-active,
