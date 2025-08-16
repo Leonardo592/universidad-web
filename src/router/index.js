@@ -20,8 +20,14 @@ const routes = [
         // Asegúrate de que este componente exista o créalo
         component: () => import("@/components/page/carreras/administracionMarketing.vue"),
       },
+      {
+    path: "/nosotros",
+    name: "nosotros",
+    component: () => import("@/components/page/nosotros.vue"),
+    },
     ],
   },
+    
   {
     path: "/:pathMatch(.*)*",
     name: "not-found",
@@ -32,7 +38,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  // Esto hace que la página suba al principio cada vez que cambias de ruta
+ 
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;

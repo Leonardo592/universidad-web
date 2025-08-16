@@ -1,6 +1,5 @@
 <template>
   <header class="hidden lg:flex flex-col sticky top-0 bg-white z-40">
-    <!-- BARRA SUPERIOR -->
     <div class="w-full bg-uancv-blue-dark text-white">
       <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-10">
         <div class="text-xs font-medium tracking-wide">
@@ -14,7 +13,6 @@
       </div>
     </div>
     
-    <!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
     <nav class="w-full bg-white border-b border-uancv-border shadow-sm h-[72px]">
       <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full relative">
 
@@ -72,17 +70,17 @@
                 <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
               </button>
                <div class="mega-menu">
-                <div class="grid grid-cols-3 gap-8 p-8">
+                <div class="grid grid-cols-4 gap-8 p-8">
                   <div>
                     <h4 class="mega-menu-title">Sobre Nosotros</h4>
                     <ul class="mt-4 space-y-3">
-                      <li><router-link to="/historia" class="mega-menu-link">Historia y Misión</router-link></li>
+                      <li><router-link to="/nosotros" class="mega-menu-link">Historia y Misión</router-link></li>
                       <li><router-link to="/autoridades" class="mega-menu-link">Autoridades</router-link></li>
                       <li><router-link to="/campus" class="mega-menu-link">Campus y Filiales</router-link></li>
                     </ul>
                   </div>
                   <div>
-                    <h4 class="mega-menu-title">Normativa y Transparencia</h4>
+                    <h4 class="mega-menu-title">Normativa</h4>
                     <ul class="mt-4 space-y-3">
                       <li><router-link to="/licenciamiento" class="mega-menu-link">Proceso de Licenciamiento</router-link></li>
                       <li><router-link to="/transparencia" class="mega-menu-link">Portal de Transparencia</router-link></li>
@@ -90,10 +88,19 @@
                     </ul>
                   </div>
                    <div>
+                    <h4 class="mega-menu-title">Gestión Institucional</h4>
+                    <ul class="mt-4 space-y-3">
+                      <li><router-link to="/gestion-institucional" class="mega-menu-link">Área de Gestión Institucional</router-link></li>
+                      <li><router-link to="/gestion-pedagogica" class="mega-menu-link">Área de Gestión Pedagógica</router-link></li>
+                      <li><router-link to="/gestion-administrativa" class="mega-menu-link">Área de Gestión Administrativa</router-link></li>
+                    </ul>
+                  </div>
+                   <div>
                     <h4 class="mega-menu-title">Comunidad</h4>
                     <ul class="mt-4 space-y-3">
                       <li><router-link to="/convenios" class="mega-menu-link">Convenios</router-link></li>
                       <li><router-link to="/noticias" class="mega-menu-link">Noticias y Eventos</router-link></li>
+                      <li><router-link to="/servicios" class="mega-menu-link">Servicios y Plataformas</router-link></li>
                     </ul>
                   </div>
                   <div>

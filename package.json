@@ -23,6 +23,7 @@
     "axios": "^1.6.1",
     "chart.js": "^4.4.7",
     "file-saver": "^2.0.5",
+    "gsap": "^3.13.0",
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.4",
     "loadash": "^1.0.0",

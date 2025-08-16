@@ -5,13 +5,14 @@
 
     <!-- 2. Barra de propuesta de valor (la que tiene el layout asimétrico) -->
     <ProgramHighlightBar />
+    <Services />
 
     <!-- 3. Sección de cifras clave de la universidad -->
     <StatsSection />
     
     <!-- 4. Sección de 'Por qué elegirnos' con imagen y lista de valores -->
     <ValueProposition />
-
+    <ResearchSection />
     <!-- 5. Sección de los campus con imágenes destacadas -->
     <CampusSection />
 
@@ -77,5 +78,7 @@ import ProgramHighlightBar from '@/components/layout/ProgramHighlightBar.vue';
 import StatsSection from '@/components/home/StatsSection.vue';
 import ValueProposition from '@/components/home/ValueProposition.vue';
 import CampusSection from '@/components/home/CampusSection.vue';
+import ResearchSection from '@/components/home/ResearchSection.vue';
 import TrustLogos from '@/components/home/TrustLogos.vue';
+import Services from '../common/services.vue';
 </script>
