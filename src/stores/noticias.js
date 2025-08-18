@@ -22,10 +22,13 @@ export const useNoticiasStore = defineStore("noticias", () => {
   });
 
   async function fetchNoticias(filtros = {}) {
+
+
     isLoading.value = true;
     error.value = null;
     try {
       const response = await apiClient.get('/noticias', { params: filtros });
+          console.log('consulta hecha', response)
       noticias.value = response.data.data.map(fixImageUrl);
       paginationData.value = {
         currentPage: response.data.meta.current_page,
@@ -43,7 +46,10 @@ export const useNoticiasStore = defineStore("noticias", () => {
   
   async function fetchNoticiasRecientes(limite = 3) {
     try {
-      const response = await apiClient.get('/noticias', { params: { per_page: limite } });
+      const response = await apiClient.get('/noticiasFront', { params: { per_page: limite } });
+
+      console.log('entrados a las noticias recientes', response.data)
+
       noticiasRecientes.value = response.data.data.map(fixImageUrl);
     } catch (err) {
       console.error("Error al obtener noticias recientes:", err);

@@ -63,6 +63,8 @@ onMounted(() => {
   storeNoticias.fetchNoticiasRecientes(ITEMS_POR_PAGINA_HOME);
 });
 
+console.log('esta entrando aca')
+
 const getBadgeColor = (index) => {
   const colors = ['bg-blue-500', 'bg-sky-500', 'bg-teal-500', 'bg-emerald-500'];
   return colors[index % colors.length];

@@ -1,9 +1,9 @@
 <template>
   <article @click="$emit('click')" class="group cursor-pointer flex flex-col h-full bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
     
-    <div class="w-full aspect-[4/3] overflow-hidden bg-gray-100 relative">
+    <!-- <div class="w-full aspect-[4/3] overflow-hidden bg-gray-100 relative">
       <img :src="imgPath" :alt="titulo" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" @error="onImageError" />
-    </div>
+    </div> -->
 
     <div class="p-4 flex flex-col flex-grow">
       <div class="flex flex-wrap justify-between items-center gap-2 mb-2 text-xs text-gray-500">

@@ -12,6 +12,9 @@
           <p class="mt-4 text-lg text-uancv-text-secondary">
             Accesos directos a las herramientas esenciales para nuestra comunidad.
           </p>
+
+          <!-- <Noticias></Noticias> -->
+
         </div>
 
         <!-- Columna Derecha: Lista de Enlaces -->
@@ -67,6 +70,8 @@
 </template>
 
 <script setup>
+import Noticias from '../page/noticias/noticias.vue';
+
 </script>
 
 <style scoped>

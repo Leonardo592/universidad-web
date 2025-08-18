@@ -55,12 +55,15 @@
 
     <!-- Sección informativa -->
     <section class="py-16 bg-gray-50">
-
         <div class="text-center">
-            <h2 class="text-3xl font-bold mb-4 text-uancv-blue-dark border-l-8 border-uancv-blue-dark pl-4 inline-block">
+            <h2 class="text-3xl font-bold text-uancv-blue-dark inline-block relative">
+                <span class="block h-1 w-20 bg-uancv-red mb-2"></span>
                 ¿Por qué estudiar Administración?
             </h2>
         </div>
+
+
+
 
         <div class="container mx-auto px-6 max-w-3xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 
@@ -95,7 +98,7 @@
             <!-- Imagen -->
             <div class="flex justify-center">
                 <img src="https://usap.edu/2024/wp-content/uploads/2024/02/administrator-business-people-financial-inspector-2023-11-27-05-19-50-utc-2048x1365.jpg"
-                    alt="Estudiar Administración" class="rounded-lg shadow-lg object-cover w-full max-w-md" />
+                    alt="Estudiar Administración" class="w-full h-full object-cover shadow-2xl" />
             </div>
 
         </div>
@@ -153,45 +156,54 @@
 
 
     <section class="bg-white py-16">
-        <div class="mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center justify-center max-w-5xl">
+        <div class="mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl">
 
             <!-- Imagen -->
             <div class="flex justify-center">
-                <div class="bg-gray-100 rounded-lg overflow-hidden p-4">
-                    <img src="https://img.freepik.com/foto-gratis/crecimiento-mi-empresa-es-impresionante_329181-11409.jpg?semt=ais_hybrid&w=360&q=40"
-                        alt="Profesional" class="rounded-lg" />
-                </div>
+                <img src="https://img.freepik.com/foto-gratis/crecimiento-mi-empresa-es-impresionante_329181-11409.jpg?semt=ais_hybrid&w=360&q=40"
+                    alt="Profesional" class="w-full h-full object-cover shadow-2xl rounded-lg" />
             </div>
 
             <!-- Texto -->
             <div>
-                <h2
-                    class="text-2xl font-bold border-l-8 border-uancv-blue-dark text-uancv-blue-dark inline-block px-4 py-1 mt-2">
-                    Campo laboral
-                </h2>
+                <!-- Título -->
+                <div class="mb-6">
+                    <div class="h-1 w-20 bg-uancv-red mb-2"></div>
+                    <h2 class="text-3xl font-bold text-uancv-blue-dark">Campo laboral</h2>
+                </div>
 
-                <ol class="list-decimal list-inside mt-6 space-y-1 text-uancv-blue-dark">
-                    <li>Empresas de producción y servicios.</li>
-                    <li>Organizaciones de asesoría y consultoría.</li>
-                    <li>Centros de investigación de mercado.</li>
-                    <li>Departamentos de recursos humanos.</li>
-                    <li>Áreas de control y calidad.</li>
-                    <li>Asesoría de desarrollo de talento.</li>
-                    <li>Estudios de consultoría financiera.</li>
-                    <li>Instituciones educativas.</li>
-                    <li>Hospitales.</li>
-                    <li>Organizaciones nacionales e internacionales.</li>
-                </ol>
+                <!-- Caja con contenido -->
+                <div class="bg-uancv-bg p-8 shadow-lg rounded-lg relative">
+                    <div class="absolute top-0 right-0 w-1.5 h-full bg-uancv-red rounded-r-lg"></div>
+
+                    <h3 class="text-xl font-bold text-uancv-blue-dark mb-4">Podrás trabajar en:</h3>
+
+                    <ul class="text-uancv-text-secondary list-disc list-inside space-y-2">
+                        <li>Empresas de producción y servicios.</li>
+                        <li>Organizaciones de asesoría y consultoría.</li>
+                        <li>Centros de investigación de mercado.</li>
+                        <li>Departamentos de recursos humanos.</li>
+                        <li>Áreas de control y calidad.</li>
+                        <li>Asesoría de desarrollo de talento.</li>
+                        <li>Estudios de consultoría financiera.</li>
+                        <li>Instituciones educativas.</li>
+                        <li>Hospitales.</li>
+                        <li>Organizaciones nacionales e internacionales.</li>
+                    </ul>
+                </div>
             </div>
-
         </div>
     </section>
 
+
     <section class="bg-uancv-red text-white py-16">
         <div class="max-w-6xl mx-auto px-8">
-            <h2 class="text-3xl font-bold mb-12 border-l-8 pl-2 border-white">
-                Malla curricular de Administración y Marketing
-            </h2>
+            <div>
+                <div class="w-24 border-t-4 border-white"></div>
+                <h2 class="text-3xl font-bold mt-4 mb-12 text-white">
+                    Malla curricular de Administración y Marketing
+                </h2>
+            </div>
 
             <!-- Carrusel -->
             <Swiper :modules="[Navigation]" :slides-per-view="4" :slides-per-group="1" :space-between="20" navigation

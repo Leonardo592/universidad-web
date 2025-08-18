@@ -85,6 +85,9 @@ const cargarNoticias = (query) => {
     anio: query.anio == currentYear ? undefined : query.anio,
     orden: query.orden || 'reciente',
   });
+
+  console.log('esta entrando aca')
+
 };
 
 onMounted(() => {
