@@ -22,7 +22,7 @@
         <div class="relative h-96 lg:h-auto">
           <div class="absolute inset-0 bg-uancv-blue-dark"></div>
           
-          <img 
+          <!-- <img 
             src="@/assets/img/mision1.jpg" 
             alt="Estudiantes colaborando en un proyecto" 
             class="absolute top-0 left-0 w-3/4 h-3/4 object-cover shadow-lg"
@@ -32,7 +32,7 @@
             src="@/assets/img/mision2.jpg" 
             alt="Equipo trabajando en una pizarra" 
             class="absolute bottom-0 right-0 w-1/2 h-1/2 object-cover border-8 border-uancv-bg shadow-lg"
-          >
+          > -->
         </div>
 
       </div>

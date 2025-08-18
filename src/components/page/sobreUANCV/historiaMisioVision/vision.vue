@@ -7,7 +7,7 @@
         <div class="relative h-96 lg:h-auto order-last lg:order-first">
           <div class="absolute inset-0 bg-uancv-gold"></div>
 
-          <img 
+          <!-- <img 
             src="@/assets/img/vision1.jpg" 
             alt="Estudiantes celebrando su graduación" 
             class="absolute top-0 right-0 w-3/4 h-3/4 object-cover shadow-lg"
@@ -17,7 +17,7 @@
             src="@/assets/img/vision2.jpg" 
             alt="Vista del campus universitario" 
             class="absolute bottom-0 left-0 w-1/2 h-1/2 object-cover border-8 border-white shadow-lg"
-          >
+          > -->
         </div>
 
         <!-- Columna Derecha: Contenido y Texto -->
