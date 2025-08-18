@@ -1,76 +1,123 @@
 <template>
-  <section class="py-12 md:py-16 bg-gray-50">
-    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      <div class="text-center mb-10 md:mb-12">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">Portal de Transparencia</h1>
-        <p class="mt-3 text-lg text-gray-600 max-w-3xl mx-auto">
-          Accede a información pública relevante sobre la gestión de la UGEL Puno.
-        </p>
-        <div class="mt-4 inline-block w-20 h-1 bg-custom-red rounded"></div>
+  <div>
+    <section class="bg-uancv-blue-dark text-white py-12">
+      <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl sm:text-4xl font-bold font-sans">Portal de Transparencia</h1>
+        <p class="mt-2 text-lg text-slate-300">Navega y encuentra la documentación oficial de la universidad.</p>
       </div>
+    </section>
 
-      <div v-if="store.isLoading" class="text-center text-gray-500 my-16">
-        <span class="inline-block animate-spin h-8 w-8 border-t-2 border-b-2 border-custom-red rounded-full"></span>
-        <p class="mt-2">Cargando información...</p>
-      </div>
+    <section class="py-16 sm:py-20 bg-uancv-bg">
+      <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div v-else-if="store.error" class="text-center text-red-700 my-10 p-6 border border-red-300 bg-red-100 rounded-lg shadow-sm max-w-2xl mx-auto">
-        <p class="font-semibold">¡Error!</p>
-        <p>{{ store.error }}</p>
-      </div>
+        <!-- Breadcrumbs (Migas de Pan) -->
+        <nav class="bg-white p-3 shadow-sm mb-8">
+          <ol class="flex items-center space-x-2 text-sm">
+            <li><button @click="navigateTo(0)" class="font-semibold text-uancv-red hover:underline">Transparencia</button></li>
+            <li v-for="(crumb, index) in breadcrumbs" :key="index">
+              <span class="text-uancv-text-secondary/50">/</span>
+              <button @click="navigateTo(index + 1)" class="ml-2 font-semibold" :class="index === breadcrumbs.length - 1 ? 'text-uancv-blue-dark' : 'text-uancv-red hover:underline'">{{ crumb }}</button>
+            </li>
+          </ol>
+        </nav>
 
-      <div v-else-if="store.items.length > 0" class="space-y-6">
-        <article v-for="item in store.items" :key="item.id" class="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-          <h2 class="text-xl lg:text-2xl font-semibold text-gray-800 mb-2">
-            {{ item.titulo }}
-          </h2>
-          <p v-if="item.descripcion" class="text-gray-600 mb-4 text-justify">
-            {{ item.descripcion }}
-          </p>
-          <div :class="{'pt-4 border-t border-gray-200 mt-4': item.url || item.descripcion }">
-            <div class="flex flex-wrap items-center gap-4">
-              <a v-if="item.url" :href="item.url" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm text-indigo-600 hover:text-indigo-800 font-medium group">
-                <LinkIcon class="w-4 h-4 mr-1.5 text-indigo-500 group-hover:text-indigo-700" />
-                Visitar Enlace Relacionado
-              </a>
-              <div v-if="item.documentos && item.documentos.length > 0" class="flex flex-wrap gap-x-4 gap-y-2">
-                <a v-for="doc in item.documentos" :key="doc.id" :href="doc.url_descarga" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm text-blue-700 hover:text-blue-900 font-medium group">
-                  <PaperClipIcon class="w-4 h-4 mr-1.5 text-gray-400 group-hover:text-blue-700" />
-                  <span>{{ doc.nombre }}</span>
-                  <span class="ml-2 text-xs text-gray-500">({{ doc.tamaño_kb }} KB)</span>
-                </a>
-              </div>
-            </div>
+        <!-- Contenido (Carpetas y Archivos) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+          <!-- Renderizar Carpetas -->
+          <div v-for="item in currentItems.folders" :key="item.name" @click="openFolder(item.name)" class="folder-card group">
+            <svg class="w-12 h-12 text-uancv-gold" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" /></svg>
+            <h3 class="mt-2 font-bold text-uancv-blue-dark group-hover:text-uancv-red">{{ item.name }}</h3>
           </div>
-        </article>
-      </div>
-     
-      <div v-else class="text-center text-gray-500 my-10 p-8 bg-white rounded-lg shadow">
-        No hay documentos de transparencia disponibles en este momento.
-      </div>
 
-      <div class="mt-12 md:mt-16 pt-10 border-t-2 border-custom-red">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-6">
-          Plataforma Nacional de Transparencia
-        </h2>
-        <div class="w-full overflow-hidden rounded-lg shadow-lg bg-white">
-          <iframe src="https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=18611&id_tema=1&ver=Dl" class="w-full h-[800px] md:h-[1000px] border-0" title="Portal de Transparencia Estándar - Plataforma Nacional"></iframe>
+          <!-- Renderizar Archivos -->
+          <a v-for="item in currentItems.files" :key="item.title" :href="item.url" target="_blank" class="file-card group">
+            <div class="flex-shrink-0">
+              <svg class="w-10 h-10 text-uancv-red" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-uancv-blue-dark group-hover:text-uancv-red">{{ item.title }}</h3>
+              <span class="text-xs text-uancv-text-secondary">PDF</span>
+            </div>
+          </a>
         </div>
+        
       </div>
-
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import { useTransparenciaStore } from "@/stores/transparencia";
-import { PaperClipIcon, LinkIcon } from '@heroicons/vue/24/outline';
+import { ref, computed } from 'vue';
 
-const store = useTransparenciaStore();
+const structure = {
+  folders: [
+    {
+      name: 'Normativa General',
+      content: {
+        folders: [
+          {
+            name: 'Reglamentos',
+            content: {
+              folders: [],
+              files: [
+                { title: 'Reglamento General v017', url: '#' },
+                { title: 'Reglamento de Responsabilidad Social v013', url: '#' },
+              ]
+            }
+          }
+        ],
+        files: [
+          { title: 'Estatuto Universitario', url: '#' },
+        ]
+      }
+    },
+    {
+      name: 'Gestión Institucional',
+      content: {
+        folders: [],
+        files: [
+          { title: 'Plan Estratégico Institucional (PEI)', url: '#' },
+          { title: 'Texto Único de Procedimientos (TUPA)', url: '#' },
+        ]
+      }
+    }
+  ],
+  files: []
+};
 
-onMounted(() => {
-  store.fetchItems();
+const currentPath = ref([]);
+
+const breadcrumbs = computed(() => currentPath.value);
+
+const currentItems = computed(() => {
+  let currentLevel = structure;
+  for (const folderName of currentPath.value) {
+    const nextFolder = currentLevel.folders.find(f => f.name === folderName);
+    if (nextFolder) {
+      currentLevel = nextFolder.content;
+    } else {
+      return { folders: [], files: [] };
+    }
+  }
+  return currentLevel;
 });
+
+const openFolder = (folderName) => {
+  currentPath.value.push(folderName);
+};
+
+const navigateTo = (index) => {
+  currentPath.value = currentPath.value.slice(0, index);
+};
+
 </script>
+
+<style scoped>
+.folder-card {
+  @apply bg-white p-6 shadow-lg cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-b-4 border-transparent hover:border-uancv-gold;
+}
+.file-card {
+  @apply flex items-center bg-white p-4 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-l-4 border-transparent hover:border-uancv-red;
+}
+</style>

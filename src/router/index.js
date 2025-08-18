@@ -7,27 +7,24 @@ const routes = [
     path: "/",
     component: DashboardLayout,
     children: [
+      { path: "", name: "inicio", component: Inicio },
+      { path: "nosotros", name: "nosotros", component: () => import("@/components/page/nosotros.vue") },
+      { path: "transparencia", name: "transparencia", component: () => import("@/components/page/portalTransparencia.vue") },
+      { path: "programas/administracion", name: "administracion", component: () => import("@/components/page/carreras/administracionMarketing.vue") },
       {
-        path: "",
-        name: "inicio",
-        component: Inicio,
-      },
-      
-  
-      {
-        path: "programas/administracion",
-        name: "administracion",
-        // Asegúrate de que este componente exista o créalo
-        component: () => import("@/components/page/carreras/administracionMarketing.vue"),
+        path: "noticias",
+        name: "noticias",
+        component: () => import("@/components/page/noticias/noticiasPadre.vue"),
       },
       {
-    path: "/nosotros",
-    name: "nosotros",
-    component: () => import("@/components/page/nosotros.vue"),
-    },
+        path: "noticias/:id",
+        name: "noticiaCompleta",
+        component: () => import("@/components/page/noticias/noticiaCompleta.vue"),
+      },
+      { path: "admision", name: "admision", component: () => import("@/components/page/admision.vue") },
+    
     ],
   },
-    
   {
     path: "/:pathMatch(.*)*",
     name: "not-found",
@@ -38,14 +35,9 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
- 
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { top: 0 };
-    }
+  scrollBehavior() {
+    return { top: 0 };
   },
 });
 
-export default router;
+export default router; // <-- ESTA PUTA LÍNEA ERA LA QUE FALTABA

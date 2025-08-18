@@ -1,22 +1,13 @@
 <template>
   <div>
-    <!-- 1. Carrusel de bienvenida a pantalla completa -->
     <Carousel />
-
-    <!-- 2. Barra de propuesta de valor (la que tiene el layout asimétrico) -->
     <ProgramHighlightBar />
     <Services />
-
-    <!-- 3. Sección de cifras clave de la universidad -->
     <StatsSection />
-    
-    <!-- 4. Sección de 'Por qué elegirnos' con imagen y lista de valores -->
     <ValueProposition />
     <ResearchSection />
-    <!-- 5. Sección de los campus con imágenes destacadas -->
     <CampusSection />
 
-    <!-- 6. Sección de noticias recientes (puedes expandir esto más adelante) -->
     <section class="bg-uancv-bg py-16 sm:py-24">
       <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
@@ -27,52 +18,45 @@
             Descubre las últimas noticias, eventos y logros de nuestra comunidad universitaria.
           </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Ejemplo de tarjeta de noticia -->
-          <div class="bg-white shadow-lg overflow-hidden group transition-transform duration-300 hover:-translate-y-2">
-            <router-link to="/noticias/slug-de-la-noticia-1" class="block">
-              <img src="https://images.unsplash.com/photo-1579226905180-636b76d96082?q=80&w=1974" alt="Imagen de la noticia" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <p class="text-sm font-semibold text-uancv-red">Noticia</p>
-                <h3 class="mt-2 text-lg font-bold text-uancv-blue-dark group-hover:text-uancv-red transition-colors">
-                  La UANCV inicia ciclo de conferencias sobre innovación contable
-                </h3>
-              </div>
+        
+        <div v-if="storeNoticias.isLoadingRecientes && storeNoticias.noticiasRecientes.length === 0" class="text-center py-10">
+          <p class="text-uancv-text-secondary">Cargando noticias...</p>
+        </div>
+        <div v-else-if="storeNoticias.error" class="text-center text-red-600 p-4 border border-red-300 bg-red-50 my-4">
+          {{ storeNoticias.error }}
+        </div>
+        <div v-else-if="storeNoticias.noticiasRecientes.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <cardPrevNoticias
+            v-for="noticia in storeNoticias.noticiasRecientes"
+            :key="noticia.id"
+            :titulo="noticia.titulo"
+            :fecha="noticia.fecha_publicacion"
+            :img="noticia.imagen_url"
+            :areas="noticia.categorias"
+            @click="irADetalleNoticia(noticia)"
+          />
+        </div>
+        <div v-else class="text-center py-12 bg-white shadow-md">
+          <p class="text-uancv-text-secondary">No hay noticias recientes para mostrar.</p>
+        </div>
+
+        <div v-if="storeNoticias.noticiasRecientes.length > 0" class="mt-12 text-center">
+            <router-link to="/noticias" class="inline-block bg-uancv-red text-white font-bold px-8 py-3 transition-colors duration-300 hover:bg-uancv-blue-dark">
+              Ver todas las noticias
             </router-link>
-          </div>
-          <div class="bg-white shadow-lg overflow-hidden group transition-transform duration-300 hover:-translate-y-2">
-            <router-link to="/noticias/slug-de-la-noticia-2" class="block">
-              <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932" alt="Imagen de la noticia" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <p class="text-sm font-semibold text-uancv-red">Convenio</p>
-                <h3 class="mt-2 text-lg font-bold text-uancv-blue-dark group-hover:text-uancv-red transition-colors">
-                  Alianza estratégica firmada con la Cámara de Comercio de Juliaca
-                </h3>
-              </div>
-            </router-link>
-          </div>
-          <div class="bg-white shadow-lg overflow-hidden group transition-transform duration-300 hover:-translate-y-2">
-            <router-link to="/noticias/slug-de-la-noticia-3" class="block">
-              <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070" alt="Imagen de la noticia" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <p class="text-sm font-semibold text-uancv-red">Evento</p>
-                <h3 class="mt-2 text-lg font-bold text-uancv-blue-dark group-hover:text-uancv-red transition-colors">
-                  Exitoso taller de liderazgo para estudiantes de Administración
-                </h3>
-              </div>
-            </router-link>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- 7. Sección de logos de respaldo y confianza -->
     <TrustLogos />
-
   </div>
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
+import { useNoticiasStore } from "@/stores/noticias";
+import { useRouter } from "vue-router";
+
 import Carousel from '@/components/layout/carousel.vue';
 import ProgramHighlightBar from '@/components/layout/ProgramHighlightBar.vue';
 import StatsSection from '@/components/home/StatsSection.vue';
@@ -80,5 +64,18 @@ import ValueProposition from '@/components/home/ValueProposition.vue';
 import CampusSection from '@/components/home/CampusSection.vue';
 import ResearchSection from '@/components/home/ResearchSection.vue';
 import TrustLogos from '@/components/home/TrustLogos.vue';
-import Services from '../common/services.vue';
+import Services from '@/components/common/services.vue';
+import cardPrevNoticias from '@/components/Ui/cardPrevNoticias.vue';
+
+const storeNoticias = useNoticiasStore();
+const router = useRouter();
+const ITEMS_POR_PAGINA_HOME = 3;
+
+onMounted(() => {
+  storeNoticias.fetchNoticiasRecientes(ITEMS_POR_PAGINA_HOME);
+});
+
+const irADetalleNoticia = (noticia) => {
+  router.push({ name: 'noticiaCompleta', params: { id: noticia.id } });
+};
 </script>

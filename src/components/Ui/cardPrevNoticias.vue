@@ -1,90 +1,51 @@
 <template>
-  <article @click="$emit('click')" class="group cursor-pointer flex flex-col h-full bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
-    
-    <!-- <div class="w-full aspect-[4/3] overflow-hidden bg-gray-100 relative">
-      <img :src="imgPath" :alt="titulo" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" @error="onImageError" />
-    </div> -->
-
-    <div class="p-4 flex flex-col flex-grow">
-      <div class="flex flex-wrap justify-between items-center gap-2 mb-2 text-xs text-gray-500">
-        <!-- ÁREA PARA LAS CATEGORÍAS (ESTILO CORREGIDO) -->
-        <div class="flex flex-wrap gap-1.5">
-          <span v-if="areas && areas.length > 0" v-for="(area, index) in areas" :key="index" class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full text-[10px] font-semibold">
-            {{ area }}
-          </span>
-          <span v-else class="text-gray-400 italic text-[10px]">Sin categoría</span>
-        </div>
-        <!-- ÁREA PARA LA FECHA (POSICIÓN CORREGIDA) -->
-        <div class="flex items-center gap-1 flex-shrink-0 ml-auto">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-          <span class="text-sm">{{ fechaFormateada }}</span>
-        </div>
+  <article @click="$emit('click')" class="group cursor-pointer flex flex-col h-full bg-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 overflow-hidden border-b-4 border-transparent hover:border-uancv-red">
+    <div class="overflow-hidden">
+      <img :src="imgPath" :alt="titulo" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" @error="onImageError" />
+    </div>
+    <div class="p-6 flex flex-col flex-grow">
+      <div class="flex justify-between items-center mb-3">
+        <span v-if="areas && areas.length > 0" class="px-3 py-1 bg-uancv-red text-white text-xs font-bold uppercase tracking-wider">
+          {{ areas[0] }}
+        </span>
+        <span v-else class="px-3 py-1 bg-uancv-text-secondary text-white text-xs font-bold uppercase tracking-wider">
+          Noticia
+        </span>
+        <span class="text-sm text-uancv-text-secondary">{{ fechaFormateada }}</span>
       </div>
-      
-      <h3 class="text-lg font-bold text-gray-800 leading-tight mb-2 line-clamp-3 group-hover:text-custom-red transition-colors">
+      <h3 class="text-xl font-bold text-uancv-blue-dark leading-tight line-clamp-3 group-hover:text-uancv-red transition-colors flex-grow">
         {{ titulo }}
       </h3>
-
-      <div class="mt-auto pt-4">
-        <button class="font-semibold text-custom-red flex items-center gap-2 text-sm">
-          Leer más
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-        </button>
+      <div class="mt-4 pt-4 border-t border-uancv-border">
+        <div class="font-semibold text-uancv-red flex items-center gap-2 text-sm">
+          <span>Leer más</span>
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </div>
       </div>
-    </div>
-    
-    <!-- BARRA DE COLORES INFERIOR (DISEÑO RESTAURADO) -->
-    <div class="absolute bottom-0 left-0 right-0 h-[4px] flex"> 
-      <div class="flex-1 bg-custom-red"></div>    
-      <div class="flex-1 bg-yellow-400"></div>
-      <div class="flex-1 bg-custom-red"></div>    
-      <div class="flex-1 bg-yellow-400"></div>
-      <div class="flex-1 bg-custom-red"></div> 
-      <div class="flex-1 bg-yellow-400"></div>
     </div>
   </article>
 </template>
 
 <script setup>
 import { computed } from 'vue';
-
 const props = defineProps({
   titulo: { type: String, required: true },
   fecha: { type: String, required: true },
   img: { type: String, default: null },
   areas: { type: Array, default: () => [] },
-  // Las props de 'rounded' y 'badgeColor' ya no son necesarias aquí
 });
-
 defineEmits(['click']);
-
 const placeholderImage = '/img/placeholder/default-notice.jpg';
-
 const fechaFormateada = computed(() => {
-  if (!props.fecha) return 'Sin fecha';
+  if (!props.fecha) return '';
   try {
-    const date = new Date(props.fecha);
-    // Formato "04 ago 2025"
-    return isNaN(date.getTime()) ? props.fecha : date.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' }).replace('.', '');
-  } catch (e) {
-    return props.fecha;
-  }
+    return new Date(props.fecha).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+  } catch (e) { return props.fecha; }
 });
-
-const imgPath = computed(() => {
-  return props.img || placeholderImage;
-});
-
-const onImageError = (event) => {
-  event.target.src = placeholderImage;
-};
+const imgPath = computed(() => props.img || placeholderImage);
+const onImageError = (event) => { event.target.src = placeholderImage; };
 </script>
 
 <style scoped>
-.line-clamp-3 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
+.line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
 </style>

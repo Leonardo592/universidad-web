@@ -8,7 +8,7 @@
         <div class="flex items-center space-x-5 text-xs">
           <a href="#" class="hover:text-white/80 transition-colors">Aula Virtual</a>
           <a href="#" class="hover:text-white/80 transition-colors">Bolsa de Trabajo</a>
-          <a href="#" class="hover:text-white/80 transition-colors">Transparencia</a>
+          <router-link to="/transparencia" class="hover:text-white/80 transition-colors">Transparencia</router-link>
         </div>
       </div>
     </div>
