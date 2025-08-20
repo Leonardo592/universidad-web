@@ -48,68 +48,67 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import { useTransparenciaNuevoStore } from '../../stores/transparenciaNuevo';
 
-const structure = {
-  folders: [
-    {
-      name: 'Normativa General',
-      content: {
-        folders: [
-          {
-            name: 'Reglamentos',
-            content: {
-              folders: [],
-              files: [
-                { title: 'Reglamento General v017', url: '#' },
-                { title: 'Reglamento de Responsabilidad Social v013', url: '#' },
-              ]
-            }
-          }
-        ],
-        files: [
-          { title: 'Estatuto Universitario', url: '#' },
-        ]
-      }
-    },
-    {
-      name: 'Gestión Institucional',
-      content: {
-        folders: [],
-        files: [
-          { title: 'Plan Estratégico Institucional (PEI)', url: '#' },
-          { title: 'Texto Único de Procedimientos (TUPA)', url: '#' },
-        ]
-      }
-    }
-  ],
-  files: []
-};
+const store = useTransparenciaNuevoStore();
 
-const currentPath = ref([]);
+// Migas de pan
+const breadcrumbs = ref([]);
 
-const breadcrumbs = computed(() => currentPath.value);
+// Items actuales (folders y archivos)
+const currentItems = ref({ folders: [], files: [] });
 
-const currentItems = computed(() => {
-  let currentLevel = structure;
-  for (const folderName of currentPath.value) {
-    const nextFolder = currentLevel.folders.find(f => f.name === folderName);
-    if (nextFolder) {
-      currentLevel = nextFolder.content;
-    } else {
-      return { folders: [], files: [] };
-    }
-  }
-  return currentLevel;
+// Al montar → traer categorías raíz
+onMounted(async () => {
+  await store.fetchCategorias();
+  loadRoot();
 });
 
-const openFolder = (folderName) => {
-  currentPath.value.push(folderName);
-};
+// Mostrar raíz
+function loadRoot() {
+  breadcrumbs.value = [];
+  currentItems.value = {
+    folders: store.categorias.map((cat) => ({
+      id: cat.id,
+      name: cat.nombre,
+    })),
+    files: [],
+  };
+}
 
-const navigateTo = (index) => {
-  currentPath.value = currentPath.value.slice(0, index);
-};
+// Abrir carpeta (categoría)
+async function openFolder(folderName) {
+  const folder = store.categorias.find((cat) => cat.nombre === folderName);
+  if (!folder) return;
+
+  breadcrumbs.value.push(folder.nombre);
+
+  // Pide al store la categoría con sus documentos
+  await store.fetchCategoriaById(folder.id);
+
+  if (store.categoriaSeleccionada) {
+    currentItems.value = {
+      folders: [], // si manejas subcategorías, aquí puedes mapearlas
+      files: store.categoriaSeleccionada.documentos.map((doc) => ({
+        id: doc.id,
+        title: doc.nombre_original,
+        url: doc.url,
+      })),
+    };
+  }
+}
+
+// Volver atrás con migas de pan
+function navigateTo(index) {
+  if (index === 0) {
+    loadRoot();
+  } else {
+    const folderName = breadcrumbs.value[index - 1];
+    openFolder(folderName);
+    breadcrumbs.value = breadcrumbs.value.slice(0, index);
+  }
+}
 
 </script>
 

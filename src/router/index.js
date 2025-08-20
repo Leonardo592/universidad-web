@@ -21,7 +21,7 @@ const routes = [
         name: "noticiaCompleta",
         component: () => import("@/components/page/noticias/noticiaCompleta.vue"),
       },
-      { path: "admision", name: "admision", component: () => import("@/components/page/admision.vue") },
+      // { path: "admision", name: "admision", component: () => import("@/components/page/admision.vue") },
     
     ],
   },
