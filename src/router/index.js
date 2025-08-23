@@ -40,4 +40,4 @@ const router = createRouter({
   },
 });
 
-export default router; // <-- ESTA PUTA LÍNEA ERA LA QUE FALTABA
+export default router; 
