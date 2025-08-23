@@ -7,7 +7,7 @@
   >
     <div class="flex items-center justify-between px-4 h-[60px] sm:h-[72px] border-b border-gray-700/50 flex-shrink-0 sticky top-0 bg-gray-900 z-10">
       <router-link to="/" @click="cerrarMenuCompleto" class="text-xl font-bold text-white hover:text-gray-200 transition-colors">
-        UGEL Puno
+        UANCV
       </router-link>
       <button
         @click="layoutStore.closeMobileMenu"
